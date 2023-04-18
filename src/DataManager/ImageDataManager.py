@@ -9,7 +9,7 @@ class ImageDataManager(BaseDataManager):
     def __init__(self, src_data: Path, output_dir: Path):
         self.output_dir: Path = output_dir
         self.output_dir.mkdir(exist_ok=True)
-        self.output_dir = output_dir / "img"
+        self.output_dir = output_dir
         self.output_dir.mkdir(exist_ok=True)
 
         self.data_paths = []
@@ -36,7 +36,7 @@ class ImageDataManager(BaseDataManager):
         self.last_idx += 1
         return imread_rgb(img_path)
 
-    def save(self, img: np.ndarray):
-        filename = "swap_" + Path(self.data_paths[self.last_idx]).name
+    def save(self, img: np.ndarray,output_name: str):
+        filename = output_name
 
         imwrite_rgb(self.output_dir / filename, img)
