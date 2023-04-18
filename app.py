@@ -52,14 +52,14 @@ class Application:
             specific_image=self.specific_id_image,
         )
 
-    def run(self):
+    def run(self, config: DictConfig):
         for _ in tqdm(range(len(self.data_manager))):
 
             att_img = self.data_manager.get()
 
             output = self.model(att_img)
-
-            self.data_manager.save(output)
+            output_name = Path(config.data.output_name)
+            self.data_manager.save(output,output_name)
 
 
 @hydra.main(config_path="configs/", config_name="run_image.yaml")
@@ -67,7 +67,7 @@ def main(config: DictConfig):
 
     app = Application(config)
 
-    app.run()
+    app.run(config)
 
 
 if __name__ == "__main__":
