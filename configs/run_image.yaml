@@ -4,6 +4,7 @@ data:
   specific_id_image: "none"
   att_video: "none"
   output_dir: ${hydra:runtime.cwd}/output
+  output_name: "cola.jpg"
 
 pipeline:
   face_detector_weights: "${hydra:runtime.cwd}/weights/face_detector_scrfd_10g_bnkps.onnx"
