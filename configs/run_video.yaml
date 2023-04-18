@@ -4,6 +4,7 @@ data:
   specific_id_image: "none"
   att_video: "${hydra:runtime.cwd}/demo_file/multi_people_1080p.mp4"
   output_dir: ${hydra:runtime.cwd}/output
+  output_name: "cola.mp4"
   clean_work_dir: True
 
 pipeline:
