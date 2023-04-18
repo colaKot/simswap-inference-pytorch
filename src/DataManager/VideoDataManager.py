@@ -24,7 +24,7 @@ class VideoDataManager(BaseDataManager):
         self.clean_work_dir = clean_work_dir
 
         if src_data.is_file():
-            self.video_name = "swap_" + src_data.name
+            #self.video_name = "swap_" + src_data.name
 
             if VideoFileClip(str(src_data)).audio is not None:
                 self.audio_handle = AudioFileClip(str(src_data))
@@ -53,7 +53,8 @@ class VideoDataManager(BaseDataManager):
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         return img
 
-    def save(self, img: np.ndarray):
+    def save(self, img: np.ndarray,output_name: str):
+        self.video_name = output_name
         filename = "frame_{:0>7d}.jpg".format(self.last_idx)
         imwrite_rgb(self.output_img_dir / filename, img)
 
