@@ -93,12 +93,12 @@ class SimSwap:
             else False,
         )
 
-        self.blend = get_model(
-            "blend_module",
-            device=self.device,
-            load_state_dice=False,
-            model_path=Path(config.blend_module_weights)
-        )
+       # self.blend = get_model(
+       #    "blend_module",
+       #     device=self.device,
+       #     load_state_dice=False,
+       #     model_path=Path(config.blend_module_weights)
+       #)
 
         self.enhance_output = config.enhance_output
         if config.enhance_output:
@@ -317,6 +317,6 @@ class SimSwap:
             fill_value=torch.zeros(3),
         )
 
-        result = self.blend(target_image, soft_face_mask, att_image)
+        #result = self.blend(target_image, soft_face_mask, att_image)
 
-        return tensor2img(result)
+        return tensor2img(soft_face_mask * target_image + (1 - soft_face_mask) * att_image)
