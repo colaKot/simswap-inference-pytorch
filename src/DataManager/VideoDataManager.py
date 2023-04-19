@@ -12,12 +12,12 @@ from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
 
 
 class VideoDataManager(BaseDataManager):
-    def __init__(self, src_data: Path, output_dir: Path, clean_work_dir: bool = False):
+    def __init__(self, src_data: Path, output_dir: Path, clean_work_dir: bool = False,output_name:str=""):
         self.video_handle: Optional[cv2.VideoCapture] = None
         self.audio_handle: Optional[AudioFileClip] = None
 
         self.output_dir = output_dir
-        self.output_img_dir = output_dir / "img"
+        self.output_img_dir = output_dir / output_name
         self.output_dir.mkdir(exist_ok=True)
         self.output_img_dir.mkdir(exist_ok=True)
         self.video_name = None
