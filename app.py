@@ -5,6 +5,7 @@ from tqdm import tqdm
 import hydra
 from omegaconf import DictConfig
 import numpy as np
+import os
 
 from src.simswap import SimSwap
 from src.DataManager.ImageDataManager import ImageDataManager
@@ -38,8 +39,9 @@ class Application:
 
         self.att_video: Optional[VideoDataManager] = None
         if att_video_path and att_video_path.is_file():
+            output_base_name=os.path.splitext(config.data.output_name)[0]
             self.att_video: Optional[VideoDataManager] = VideoDataManager(
-                src_data=att_video_path, output_dir=output_dir, clean_work_dir=config.data.clean_work_dir
+                src_data=att_video_path, output_dir=output_dir, clean_work_dir=config.data.clean_work_dir,output_name=output_base_name
             )
 
         assert not (self.att_video and self.att_image), "Only one attribute source can be used!"
