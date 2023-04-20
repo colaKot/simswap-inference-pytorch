@@ -19,8 +19,8 @@ git clone https://github.com/mike9251/simswap-inference-pytorch
 cd simswap-inference-pytorch
 
 # [OPTIONAL] create conda environment
-conda create -n myenv python=3.9
-conda activate myenv
+conda create -n simswap python=3.9
+conda activate simswap
 
 # install pytorch and torchvision according to instructions
 # https://pytorch.org/get-started/
