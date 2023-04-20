@@ -20,6 +20,10 @@ cd simswap-inference-pytorch
 
 # [OPTIONAL] create conda environment
 conda create -n simswap python=3.9
+
+source activate
+conda deactivate
+
 conda activate simswap
 
 # install pytorch and torchvision according to instructions
